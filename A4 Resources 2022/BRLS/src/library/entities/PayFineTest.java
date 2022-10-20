@@ -41,11 +41,6 @@ class PayFineTest {
 		calendar.incrementDate(4);
 		library.updateCurrentLoanStatus();
 		
-		riui.setReady();
-		ric.itemScanned(1);
-		ric.scanningCompleted();
-		riui.setInspecting();
-		riui.setCompleted();
 		
 		library.calculateOverDueFine(loan);
 		
