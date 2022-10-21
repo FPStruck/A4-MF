@@ -3,6 +3,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.text.ParseException;
 import java.util.Date;
+
+import library.borrowitem.BorrowItemControl;
+import library.borrowitem.BorrowItemUI;
 import library.payfine.PayFineControl;
 import library.payfine.PayFineUI;
 import library.returnItem.ReturnItemControl;
@@ -31,7 +34,7 @@ class LoanLimitTest {
 	PayFineUI pfui;
 	ReturnItemControl ric;
 	ReturnItemUI riui;
-	
+
 	@BeforeEach
 	void Setup() throws ParseException {
 		
@@ -52,15 +55,13 @@ class LoanLimitTest {
 		loan = library.issueLoan(item, patron);
 		loan1 = library.issueLoan(item1, patron);
 		loan2 = library.issueLoan(item2, patron);
-		loan3 = library.issueLoan(item3, patron);
-		loan4 = library.issueLoan(item4, patron);
 		
 		library.updateCurrentLoanStatus();
 	}
 	
 	@Test
 	void test() {	
-		assertEquals(library.getLoanLimit(), patron.getNumberOfCurrentLoans());
+		assertEquals(patron.getNumberOfCurrentLoans(), library.getLoanLimit());
 	}
 }
 
